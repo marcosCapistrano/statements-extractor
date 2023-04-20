@@ -38,7 +38,15 @@ func main() {
 
 	statements = extractor.ExtractStatements(reader)
 
+	var in, out float64
 	for _, statement := range statements {
 		statement.PrintStatement()
+		if statement.Value > 0 {
+			in += statement.Value
+		} else {
+			out += statement.Value
+		}
 	}
+
+	fmt.Printf("in: %f, out: %f, len: %d", in, out, len(statements))
 }
